@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::TemplateXS;
 {
-  $Dist::Zilla::Plugin::TemplateXS::VERSION = '0.001';
+  $Dist::Zilla::Plugin::TemplateXS::VERSION = '0.002';
 }
 
 use Moose;
@@ -31,7 +31,7 @@ sub filename {
 	my ($self, $name) = @_;
 	my @module_parts = split /::/, $name;
 	if ($self->style eq 'MakeMaker') {
-		return path('lib', $module_parts[-1].'.xs');
+		return $module_parts[-1] . '.xs';
 	}
 	elsif ($self->style eq 'ModuleBuild') {
 		return path('lib', @module_parts) . '.xs';
@@ -70,7 +70,7 @@ Dist::Zilla::Plugin::TemplateXS - A simple xs-file-from-template plugin
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
